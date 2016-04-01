@@ -7,13 +7,22 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <link href="" rel="stylesheet">
+<style type="text/css">
+	.error-input{
+		border: 1px solid red;
+	}
+</style>
 <script type="text/javascript" src="js-oop.js"></script>
-<script type="text/javascript">
-	var things = ['asd','qwe','zxc','aaa'];
-	person.sayHello('zhangzewei');
-	person.doSomethings(things);
-</script>
+
 </head>
 <body>
+<input class="test" type="text" id="name"><br>
+<input class="test" type="text" id="things">
+<button onclick="checkInput();">提交</button>
 </body>
+<script type="text/javascript">
+	function checkInput(){
+		getPerson.init();
+	}
+</script>
 </html>
