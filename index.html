@@ -16,13 +16,13 @@
 
 </head>
 <body>
-<input class="test" type="text" id="name"><br>
+<input class="test" type="password" id="name"><br>
 <input class="test" type="text" id="things">
-<button onclick="checkInput();">提交</button>
+<button onclick="checkInput('test', 'name');">提交</button>
 </body>
 <script type="text/javascript">
-	function checkInput(){
-		getPerson.init();
+	function checkInput(className, psdId){
+		getPerson.init(className, psdId);
 	}
 </script>
 </html>

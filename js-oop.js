@@ -1,37 +1,42 @@
-var things = ['asd','qwe','zxc','aaa'];
-var person = function(){
-	this.sayHello = function(name){
-		console.log('hello '+name);
-	};
-	this.doSomethings = function(things){
-		console.log('I can do '+things);
+
+var checkEnptyInput = function(){
+	this.isEnpty = function(className){
+		var inputs = document.getElementsByClassName(className);
+		var inputsLength = document.getElementsByClassName(className).length;
+		for(let i = 0; i < inputsLength; i ++){
+			if(inputs[i].value == ''){
+				var b = '没有完成填写';
+				inputs[i].className += ' error-input';
+			}else{
+				//去掉error-input，并且保持原有class
+				inputs[i].className = inputs[i].className.replace( /(?:^|\s)error-input(?!\S)/g , '' );
+			}
+		}
 	};
 };
 
-var student = function(){
-	this.goToSchool = function(name){
-		console.log(name+' go to school')
+var checkPsd = function(){
+	this.legalPsd = function(psdId){
+		var psdInput = document.getElementById(psdId);
+		var psdLength = psdInput.value.length;
+		if(!(psdLength >= 6 && psdLength <= 12)){
+			psdInput.className += ' error-input';
+			alert('密码长度应该在6-12之间');
+		}else{
+			psdInput.className = psdInput.className.replace( /(?:^|\s)error-input(?!\S)/g , '' );
+		}
+
 	};
 };
 
-student.prototype = new person();
-var student = new student();
+checkPsd.prototype = new checkEnptyInput();
+var checkPsd = new checkPsd();
 
 var getPerson = function(){
 	return {
-		init : function (){
-			var inputs = document.getElementsByClassName('test');
-			var inputsLength = document.getElementsByClassName('test').length;
-			for(let i = 0; i < inputsLength; i ++){
-				if(inputs[i].value == ''){
-					var b = '没有完成填写';
-					inputs[i].className += ' error-input';
-				}else{
-					inputs[i].className = 'test';
-				}
-			}
-			student.sayHello(b);
-			//student.doSomethings(thing);
+		init : function (className, psdId){
+			checkPsd.isEnpty(className);
+			checkPsd.legalPsd(psdId);
 		},
 	};
 }();
