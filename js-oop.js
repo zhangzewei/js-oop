@@ -19,9 +19,9 @@ var checkPsd = function(){
 	this.legalPsd = function(psdId){
 		var psdInput = document.getElementById(psdId);
 		var psdLength = psdInput.value.length;
-		if(!(psdLength >= 6 && psdLength <= 12)){
+		if(!(psdLength >= 10 && psdLength <= 20)){
 			psdInput.className += ' error-input';
-			alert('密码长度应该在6-12之间');
+			alert('密码长度应该在10-20之间');
 		}else{
 			psdInput.className = psdInput.className.replace( /(?:^|\s)error-input(?!\S)/g , '' );
 		}
